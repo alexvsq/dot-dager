@@ -21,7 +21,7 @@ export default function cardFollowers({ number, imgSrc }) {
 
   return (
     <article
-      className="bg-white/80 backdrop-blur-sm rounded-2xl px-2 py-1 shadow-card md:px-4 md:py-2 flex gap-2 items-center "
+      className="bg-white/70 backdrop-blur-sm rounded-2xl px-2 py-1 shadow-card md:px-4 md:py-2 flex gap-2 items-center "
     >
       <img className="h-6 md:h-8" src={imgSrc} alt={number.toString()} />
 

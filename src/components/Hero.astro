@@ -26,7 +26,12 @@ const tags = [
 ];
 ---
 
-<div class="bg-hero">
+<div class="bg-hero relative">
+  <img
+    class="hidden md:block absolute top-5 left-5 h-[35%]"
+    src="/images/icons-bg.png"
+    alt="icons-bg"
+  />
   <header
     class="h-screen flex flex-col md:flex-row-reverse justify-center md:justify-between items-center max-w-[90%] md:max-w-[1050px] mx-auto relative"
   >
@@ -40,10 +45,14 @@ const tags = [
       <p class="italic text-sm text-center">
         Full-stack senior y contador serial de chistes de mierda.
       </p>
-      <div class="absolute top-40 left-20">
+      <div
+        class="absolute top-40 left-20 animate-bounce animate-infinite animate-duration-[10000ms] animate-delay-100 animate-ease-in"
+      >
         <CardFollowers client:load number={17} imgSrc="/icons/instagram2.png" />
       </div>
-      <div class="absolute bottom-10 right-5">
+      <div
+        class="absolute bottom-10 right-5 animate-bounce animate-infinite animate-duration-[15000ms] animate-delay-100 animate-ease-in"
+      >
         <CardFollowers client:load number={87} imgSrc="/icons/youtube.png" />
       </div>
     </div>
@@ -57,10 +66,14 @@ const tags = [
         />
       </div>
 
-      <div class="absolute -bottom-6 -right-2">
+      <div
+        class="absolute -bottom-6 -right-2 animate-bounce animate-infinite animate-duration-[10000ms] animate-delay-100 animate-ease-in"
+      >
         <CardFollowers client:load number={17} imgSrc="/icons/instagram2.png" />
       </div>
-      <div class="absolute bottom-14 right-16">
+      <div
+        class="absolute bottom-14 right-16 animate-bounce animate-infinite animate-duration-[15000ms] animate-delay-100 animate-ease-in"
+      >
         <CardFollowers client:load number={87} imgSrc="/icons/youtube.png" />
       </div>
     </div>
