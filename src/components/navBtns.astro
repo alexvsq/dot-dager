@@ -15,22 +15,45 @@ const navButtons = [
 ];
 ---
 
-<ul class="flex gap-14">
-  {
-    navButtons.map((button) => (
-      <li class="flex items-center gap-2 hover:text-purple transition">
-        <a class="font-medium text-[15px] nav-btn" href={button.link}>
-          {button.name}
-        </a>
-      </li>
-    ))
-  }
-</ul>
+<div>
+  <div
+    id="btn-bg"
+    class="absolute transition-all ease-in-out -z-10 w-[var(--width)] h-[var(--height)] left-[var(--left)] top-[var(--top)] bg-purple rounded-full"
+  >
+  </div>
+  <ul class="flex gap-14 z-10">
+    {
+      navButtons.map((button) => (
+        <li class="flex items-center gap-2 hover:text-purple  ">
+          <a
+            class="font-medium text-[15px] nav-btn px-3 py-1 "
+            href={button.link}
+          >
+            {button.name}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</div>
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
     const sections = document.querySelectorAll("section");
     const navBtns = document.querySelectorAll(".nav-btn");
+    const btnBg = document.querySelector("#btn-bg") as HTMLElement;
+
+    const initializeBackground = () => {
+      btnBg.classList.add("text-active");
+
+      const { left, top, width, height } = navBtns[0].getBoundingClientRect();
+      btnBg.style.setProperty("--left", `${left}px`);
+      btnBg.style.setProperty("--top", `${top}px`);
+      btnBg.style.setProperty("--width", `${width}px`);
+      btnBg.style.setProperty("--height", `${height}px`);
+    };
+
+    initializeBackground();
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -39,17 +62,26 @@ const navButtons = [
 
           if (entry.isIntersecting) {
             navBtns.forEach((btn) => {
-              const href = btn.getAttribute("href")?.substring(1); // Obtén el id correspondiente al botón
-              if (href === currentSection) {
-                btn.classList.add("active");
+              const href = btn.getAttribute("href")?.substring(1);
+
+              if (currentSection === href) {
+                const { left, top, width, height } =
+                  btn.getBoundingClientRect();
+
+                btnBg.style.setProperty("--left", `${left}px`);
+                btnBg.style.setProperty("--top", `${top}px`);
+                btnBg.style.setProperty("--width", `${width}px`);
+                btnBg.style.setProperty("--height", `${height}px`);
+
+                btn.classList.add("text-active");
               } else {
-                btn.classList.remove("active");
+                btn.classList.remove("text-active");
               }
             });
           }
         });
       },
-      { threshold: 0.5 } // Detecta cuando el 50% de la sección está visible
+      { threshold: 0.5 }
     );
 
     sections.forEach((section) => observer.observe(section));
@@ -57,7 +89,7 @@ const navButtons = [
 </script>
 
 <style>
-  .nav-btn {
+  /*   .nav-btn {
     color: black;
     text-decoration: none;
     transition: color 0.3s ease;
@@ -68,5 +100,8 @@ const navButtons = [
     color: white;
     padding: 3px 18px;
     border-radius: 20px;
+  } */
+  .text-active {
+    color: white;
   }
 </style>
