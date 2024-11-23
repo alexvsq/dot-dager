@@ -1,0 +1,89 @@
+---
+import NavBtns from "./navBtns.astro";
+const iconsSocialLinks = [
+  {
+    name: "Instagram",
+    img: "/icons/instagram.png",
+    link: "https://www.instagram.com/dager.32/",
+  },
+  {
+    name: "Youtube",
+    img: "/icons/youtube.png",
+    link: "https://www.youtube.com/@DotDager",
+  },
+  {
+    name: "Github",
+    img: "/icons/github.png",
+    link: "https://github.com/MarianoVilla",
+  },
+];
+---
+
+<header id="progressbar" class="fixed w-full flex justify-center z-10">
+  <nav class="flex justify-between items-center w-[95%] py-2 md:hidden">
+    <article class="flex items-center gap-2">
+      <div class="w-10 h-10 rounded-full bg-purple p-1">
+        <img
+          class="rounded-full grayscale"
+          src="/images/user-logo.webp"
+          alt="user"
+        />
+      </div>
+      <p class="font-semibold">Mariano Villa</p>
+    </article>
+
+    <aside>
+      <img class="w-8" src="/icons/menu-nav.png" alt="menu" />
+    </aside>
+  </nav>
+
+  <nav class="hidden md:flex items-center py-2 w-[1050px]">
+    <div class="flex-1">
+      <article class="flex items-center gap-2">
+        <div class="w-10 h-10 rounded-full bg-purple p-1">
+          <img
+            class="rounded-full grayscale"
+            src="/images/user-logo.webp"
+            alt="user"
+          />
+        </div>
+        <p class="font-medium text-base">Mariano Villa</p>
+      </article>
+    </div>
+
+    <NavBtns />
+
+    <div class="flex-1">
+      <div class="flex gap-5 justify-end">
+        {
+          iconsSocialLinks.map((link) => (
+            <a class=" w-8 " href={link.link} target="_blank">
+              <img src={link.img} alt={link.name} />
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </nav>
+</header>
+
+<style>
+  @keyframes scale-up {
+    from {
+      background-color: transparent;
+      -webkit-box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0);
+      -moz-box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0);
+      box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0);
+    }
+    to {
+      background-color: rgba(255, 255, 255, 0.5);
+      backdrop-filter: blur(12px);
+    }
+  }
+
+  #progressbar {
+    animation: linear forwards scale-up;
+    animation-timeline: scroll();
+    animation-range: 0 300px;
+  }
+</style>

@@ -1,0 +1,98 @@
+---
+const interests = [
+  {
+    name: "Programación",
+    emoji: "💻",
+    videoSrc: "/videos/dev.mp4",
+    text: "La programación es mi forma de arte; me encanta transformar ideas en soluciones tangibles con líneas de código bien estructuradas. Encontrar la lógica perfecta en cada proyecto es un desafío que me apasiona profundamente.",
+    url: "https://www.youtube.com/@DotDager",
+  },
+  {
+    name: "Música",
+    emoji: "🎸",
+    text: "Tocar la guitarra es mi manera de desconectarme y encontrar equilibrio. Cada melodía que creo refleja un fragmento de mi personalidad, desde acordes tranquilos hasta riffs llenos de energía.",
+    videoSrc: "/videos/music.mp4",
+    url: "https://www.youtube.com/c/DagerMusic",
+  },
+  {
+    name: "Gatos",
+    emoji: "😺",
+    text: "Mis gatos son más que mascotas; son mis compañeros de inspiración. Sus travesuras y silenciosa compañía me recuerdan que incluso en los días más complicados, siempre hay lugar para una sonrisa.",
+    videoSrc: "/videos/cat.mp4",
+    url: "https://www.instagram.com/dager.32/",
+  },
+  {
+    name: "Filosofía",
+    emoji: "🧠",
+    text: "La filosofía me ayuda a reflexionar sobre las grandes preguntas de la vida. Explorar conceptos como la ética, la existencia y el conocimiento me inspira a ser más consciente en mi día a día.",
+    videoSrc: "/videos/philosopy.mp4",
+    url: "https://www.youtube.com/@ElAntroDeDager",
+  },
+];
+---
+
+<section
+  id="interests"
+  class="max-w-[95%] text-center md:text-left md:max-w-[1050px] mx-auto"
+>
+  <h2 class="text-black text-4xl md:text-5xl font-black py-10">Intereses.</h2>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-16 my-4">
+    {
+      interests.map((interest) => (
+        <article class="relative aspect-[3/2] w-full md:w-[440px] overflow-hidden">
+          <video
+            autoplay
+            loop
+            muted
+            playsinline
+            class="w-full h-full object-cover blur-[1px]"
+          >
+            <source src={interest.videoSrc} type="video/mp4" />
+            Tu navegador no soporta la reproducción de video.
+          </video>
+          <div class="absolute inset-0 bg-black  bg-opacity-40 px-3 py-6 flex flex-col justify-between items-center">
+            <p class="text-white text-sm px-2 py-1">{interest.text}</p>
+            <footer class="w-full flex justify-between items-center">
+              <a
+                href={interest.url}
+                target="_blank"
+                class="bg-purple w-10 rounded-full p-3"
+              >
+                <img src="/icons/open.png" alt="open" />
+              </a>
+              <p class="text-white text-2xl font-bold">
+                {interest.emoji}
+                {interest.name}
+              </p>
+            </footer>
+          </div>
+        </article>
+      ))
+    }
+  </div>
+</section>
+
+<!-- 
+ <article class="relative aspect-[3/2] w-[440px] overflow-hidden">
+      <video autoplay loop muted playsinline class="w-full h-full object-cover">
+        <source src="/videos/cat.mp4" type="video/mp4" />
+        Tu navegador no soporta la reproducción de video.
+      </video>
+      <div
+        class="absolute inset-0 bg-black bg-opacity-25 p-5 flex flex-col justify-between items-center"
+      >
+        <p class="text-white text-sm px-2 py-1">
+          Mis gatos son más que mascotas; son mis compañeros de inspiración. Sus
+          travesuras y silenciosa compañía me recuerdan que incluso en los días
+          más complicados, siempre hay lugar para una sonrisa.
+        </p>
+        <footer class="w-full flex justify-between items-center">
+          <div class="bg-purple w-8 rounded-full p-1">
+            <img src="/icons/open.png" alt="open" />
+          </div>
+          <p class="text-white text-3xl font-bold">😺Gatos</p>
+        </footer>
+      </div>
+    </article>
+-->

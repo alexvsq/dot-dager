@@ -1,0 +1,96 @@
+---
+import Title from "./Title.astro";
+import CardFollowers from "./card-followers.jsx";
+
+const tags = [
+  {
+    name: "Programación",
+    img: "/icons/dev.png",
+  },
+  {
+    name: "Filosofía",
+    img: "/icons/book.png",
+  },
+  {
+    name: "Youtuber",
+    img: "/icons/youtube-black.png",
+  },
+  {
+    name: "Gatos",
+    img: "/icons/cat.png",
+  },
+  {
+    name: "Música",
+    img: "/icons/music.png",
+  },
+];
+---
+
+<div class="bg-hero">
+  <header
+    class="h-screen flex flex-col md:flex-row-reverse justify-center md:justify-between items-center max-w-[90%] md:max-w-[1050px] mx-auto relative"
+  >
+    <div
+      class="absolute animate-bounce w-full flex gap-1 justify-center bottom-3"
+    >
+      <p class="text-xl">👇</p>
+    </div>
+    <div class="hidden md:block relative">
+      <img class="" src="/images/hero.png" alt="hero" />
+      <p class="italic text-sm text-center">
+        Full-stack senior y contador serial de chistes de mierda.
+      </p>
+      <div class="absolute top-40 left-20">
+        <CardFollowers client:load number={17} imgSrc="/icons/instagram2.png" />
+      </div>
+      <div class="absolute bottom-10 right-5">
+        <CardFollowers client:load number={87} imgSrc="/icons/youtube.png" />
+      </div>
+    </div>
+
+    <div class="md:hidden w-full flex justify-end relative">
+      <div class="w-20 h-20 rounded-full bg-purple overflow-hidden">
+        <img
+          class="h-full object-cover"
+          src="/images/user-hero.png"
+          alt="hero"
+        />
+      </div>
+
+      <div class="absolute -bottom-6 -right-2">
+        <CardFollowers client:load number={17} imgSrc="/icons/instagram2.png" />
+      </div>
+      <div class="absolute bottom-14 right-16">
+        <CardFollowers client:load number={87} imgSrc="/icons/youtube.png" />
+      </div>
+    </div>
+
+    <aside class="">
+      <p class="text-purple text-[15px] font-semibold">Hola, yo soy</p>
+      <Title />
+      <div class="bg-purple h-[15px] w-[265px]"></div>
+      <p class="text-[15px] max-w-[30ch] my-3">
+        Soy un <strong>Creador de Contenido y Programador Full Stack</strong> que
+        le apasionan los gatos, las guitarras, los pepinillos y la filosofía.
+      </p>
+
+      <footer class="flex gap-3 flex-wrap max-w-96 my-3">
+        {
+          tags.map((tag) => (
+            <div class="flex items-center gap-3 bg-purple px-3 pr-4 py-1 rounded-full">
+              <img class=" w-5" src={tag.img} alt={tag.name} />
+              <p class="text-white text-sm">{tag.name}</p>
+            </div>
+          ))
+        }
+      </footer>
+    </aside>
+  </header>
+</div>
+
+<style>
+  .bg-hero {
+    background: url("/images/rejilla2.png") no-repeat right top;
+    background-size: 85vh;
+  }
+</style>
